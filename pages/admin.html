@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<?php
+$message = "<p></p>";
+
+$username = $password = $aa = $access = $req_access = "";
+if ($_POST) {
+	
+$aa = $_POST["password"];
+$req_password = "admin";
+//echo $req_password . $password;
+$username = test_input($_POST['username']);
+$password = md5($_POST['password']);
+
+include('connect.php');
+
+$query = "SELECT * FROM `users` WHERE `username` = '$username' AND `password` = '$password';";
+
+$result = mysqli_query($con, $query);
+	
+if (mysqli_num_rows($result)==1) {
+	
+	if ($aa == $req_password) {
+		session_start();
+		echo $req_password . $password . $aa ;
+		$_SESSION['username']='true';
+		header('location:viewmailinglist.php');
+	}
+} else {
+	$message = "<p>Incorrect Username or Password</p>";
+}
+
+}
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+?>
+<title>Administrators Area</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link rel="shortcut icon" href="../favicon.ico"> 
+        <link href="../css/styles.css" rel="stylesheet" type="text/css">
+        <link href="../css/media.css" rel="stylesheet" type="text/css">
+        
+    </head>
+    <body>
+     
+<div id="wrapper1">
+    <div id="container">
+     	<div id="header_container">
+    <div id="leftheader"><img id="hinge" class="img1" src="../images/logo1.jpg" alt="AllStyles Home Logo" title="Allstyles Company Logo."/></div>            
+       	</div>
+		<div id="rightheader"><img  class="img1" src="../images/logo_right.png" alt="AllStyles Contact Logo"  title="Company Contact Information."/>
+		</div>
+ 	</div>
+    
+ <div id="navbar">
+      <ul id="nav">
+        <li>
+          <a class="active" href="../index.html">HOME</a>
+        </li>
+        <li>
+          <a href="about.html">ABOUT US</a>
+        </li>
+        <li>
+          <a href="designs.html">DESIGNS</a>
+        </li>
+        <li>
+          <a href="processes.html">OUR PROCESSES</a>
+        </li>
+        <li>
+          <a href="testimonials.html">TESTIMONIALS</a>
+        </li>
+        <li>
+          <a href="faqs.html">FAQs</a>
+        </li>
+        <li>
+          <a href="contact.html">CONTACT US</a>
+        </li>
+        <li class="loginli"><a href="login.html">LOG IN AREA</a></li>
+      </ul>
+ </div> 
+ 
+ <div id="adminarea"><div >
+<h2>Administrators LogIn</h2>
+<section id = "admin_container">
+
+              
+ <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])";?>
+
+    <div class="admin_title">Username:</div>
+    
+        <input type="text" name="username" class="admin_title_input" 
+            placeholder="Please Enter Your Username"></input> 
+           
+   <br><br><br>
+
+    <div class="admin_title">Password:</div>
+    
+       <input type="password" name="password" class="admin_title_input" placeholder="Please Enter Your Password"></input>      
+    <br><br>
+
+    <input type="submit" name="submit" value="Submit Details" class="btn_submit">
+    </input></form>
+    
+        </section>
+        <?php
+		echo $message
+		?>
+        
+	</div>
+
+	
+<div class="foot" id="footer">
+      <a href="privacy_statement.pdf" target="_blank">Privacy Statement </a> |
+      <a href="web_site_terms.pdf" target="_blank">Terms &amp; Conditions </a>| 
+      <a href="sitemap.html">Site Map</a> | &#169; 2015
+      AllStyle Homes
+      
+	<div class="validate">
+    <a href="">
+    <img style="border:0;width:88px;height:31px"
+    src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+    alt="Valid CSS!" />
+    </a>
+    </div>
+ </div>
+</div>
+</div>
+</body>
+</html>
