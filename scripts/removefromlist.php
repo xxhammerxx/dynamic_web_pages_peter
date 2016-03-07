@@ -5,7 +5,7 @@ $email = $_POST['email'];
 include('connect.php');
 
 
-$query = "DELETE FROM `email_subscribers` WHERE `email` = '" . $email . "'";
+$query = "DELETE FROM `emaillist` WHERE `email` = '" . $email . "'";
 
 
 $result = mysqli_query($con, $query);

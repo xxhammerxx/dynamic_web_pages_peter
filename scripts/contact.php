@@ -6,16 +6,11 @@ $email = testinfo($_POST['email']);
 
 include('connect.php');
 
-$query = "INSERT INTO `email_subscribers` (`customer_ID`, `name`, `email`) VALUES (NULL, '$name', '$email');";
+$query = "INSERT INTO `emaillist` (`userID`, `username`, `email`) VALUES (NULL, '$name', '$email');";
 
 $result = mysqli_query($con, $query);
 
-
-
-
-
 }
-
 
 function testinfo($data){
 $data1 = trim($data);
@@ -24,13 +19,14 @@ $data3 = htmlspecialchars($data2);
 return $data;
 }
 
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
+<!--[if lt IE 8 ]>
+  <p>Your browser is out of date please upgrade your browser to view this site</p>
+  <a href="http://windows.microsoft.com/en-US/internet-explorer/download-ie"> Download new browser here</a>
+<![endif]-->
 <head>
   <link href="../css/styles.css" rel="stylesheet" type="text/css">
   <link href="../css/media.css" rel="stylesheet" type="text/css">
@@ -100,13 +96,7 @@ if (isset($result)) {
 }
 }
 
-
-
-
 ?>
-
-
-
 </div>
   </div>
   <div id="contact">
@@ -133,6 +123,9 @@ Email:<a href="mailto:alex Knox&#63;Subject&#61;AllStyle%20Homes" class="links" 
       <a href="web_site_terms.pdf" target="_blank">Terms & Conditions </a>| 
       <a href="sitemap.html">Site Map</a> | &#169; 2015
       AllStyle Homes
+      <div class="adobe">
+      <a href="http://get.adobe.com/reader/" target="_blank"><img src="../images/adobe.png" alt="Get Adobe Reader." style="float:right;"></a>
+      </div>
     </div>
  </div>
 </body>

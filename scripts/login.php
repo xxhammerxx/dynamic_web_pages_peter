@@ -14,7 +14,7 @@ $password = md5($_POST['password']);
 include('connect.php');
 
 
-$query = "SELECT * FROM `users` WHERE `username`= '$username' AND `password` = '$password';";
+$query = "SELECT * FROM `users` WHERE `user_name`= '$username' AND `password` = '$password';";
 
 $result = mysqli_query($con, $query);
 
@@ -27,12 +27,7 @@ if (mysqli_num_rows($result) == 1) {
   $message = "<p style='color:#b40c00'>Incorrect name or password</p>";
 }
 
-
-
-
-
 }
-
 
 function testinfo($data){
 $data1 = trim($data);
@@ -40,10 +35,6 @@ $data2 = stripslashes($data1);
 $data3 = htmlspecialchars($data2);
 return $data;
 }
-
-
-
-
 
 ?>
 <title>LogIn Area</title>
@@ -106,11 +97,6 @@ return $data;
 <section class = "col-sm-offset2 col-sm-10">
 
               
- 
-
-
-
-
 <?php echo $message;
 
 if (!isset($_SESSION['loggedin'])) {
@@ -129,14 +115,11 @@ if (!isset($_SESSION['loggedin'])) {
 
 }
 
-
 if (isset($_SESSION['loggedin'])) {
  
-
-
  include('connect.php');
 
-$query2 = "SELECT * FROM `email_subscribers`;";
+$query2 = "SELECT * FROM `emaillist`;";
 
 $result2 = mysqli_query($con, $query2);
 echo "<a href='logout.php' class='btn btn-success'>Log Out</a>";
@@ -147,7 +130,6 @@ echo "<a href='logout.php' class='btn btn-success'>Log Out</a>";
     <input type='email' class='form-control' id='email' name='email'>
   </div>
   
-
   <button type='submit' class='btn btn-danger'>Delete</button>
 </form>";
 
@@ -160,42 +142,29 @@ echo "<table class='table table-striped'>
   <tbody >";
 
 while ($row = mysqli_fetch_assoc($result2)) {
-  echo "<tr style='border: 1px black solid'> <td >" . $row['name'] . "</td><td >" . $row['email'] . "</td></tr>";
+  echo "<tr style='border: 1px black solid'> <td >" . $row['username'] . "</td><td >" . $row['email'] . "</td></tr>";
 }
 
 echo "<tbody></table>";
 
-
-
-
-
-
-
 }
-
-
-
 
 ?>
 
 
         </section>  <!-- Closes the "email_container" section-->
-
- 
-
-	
-
 </div>
 
 
 </div>
-
-
 <div class="foot" id="footer">
       <a href="privacy_statement.pdf" target="_blank">Privacy Statement </a> |
       <a href="web_site_terms.pdf" target="_blank">Terms &amp; Conditions </a>| 
       <a href="sitemap.html">Site Map</a> | &#169; 2015
       AllStyle Homes
+      <div class="adobe">
+      <a href="http://get.adobe.com/reader/" target="_blank"><img src="../images/adobe.png" alt="Get Adobe Reader." style="float:right;"></a>
+      </div>
       
   <div class="validate">
     <a href="">
