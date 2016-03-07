@@ -56,11 +56,11 @@ return $data;
    <div id="navbar">     
 <ul id="nav">
 	<li><a class="active" href="../index.html">HOME</a></li>	
-    <li><a href="about.html">ABOUT US</a></li>
-    <li><a href="designs.html">DESIGNS</a></li>
-    <li><a href="processes.html">OUR PROCESSES</a></li>
-    <li><a href="testimonials.html">TESTIMONIALS</a></li>
-    <li><a href="faqs.html">FAQs</a></li>
+    <li><a href="../about.html">ABOUT US</a></li>
+    <li><a href="../designs.html">DESIGNS</a></li>
+    <li><a href="../processes.html">OUR PROCESSES</a></li>
+    <li><a href="../testimonials.html">TESTIMONIALS</a></li>
+    <li><a href="../faqs.html">FAQs</a></li>
     <li><a href="contact.php">CONTACT US</a></li>
     <li class="loginli"><a href="login.php">LOG IN AREA</a></li>
    </ul>
